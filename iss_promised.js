@@ -10,18 +10,18 @@ const fetchCoordsbyIP = (body) => {
 };
 
 const fetchISSFlyOverTimes = (body) => {
-  const {latitude, longitude} = JSON.parse(body);
+  const { latitude, longitude } = JSON.parse(body);
   return request(`http://api.open-notify.org/iss-pass.json?lat=${latitude}&lon=${longitude}`);
 };
 
 const nextISSTimesForMyLocation = () => {
   return fetchMyIP()
-  .then(fetchCoordsbyIP)
-  .then(fetchISSFlyOverTimes)
-  .then ((data) => {
-    const { response } = JSON.parse(data);
-    return response;
-  });
+    .then(fetchCoordsbyIP)
+    .then(fetchISSFlyOverTimes)
+    .then((data) => {
+      const { response } = JSON.parse(data);
+      return response;
+    });
 };
 
 module.exports = {
